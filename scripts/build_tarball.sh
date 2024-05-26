@@ -24,7 +24,7 @@ _STYLE_DONE="${_STYLE_COLOR_GREEN}Done${_STYLE_RESET}"
 # --- VARIABLES ---
 app_name='LifeManager'
 version='7.6.2'
-project_dir='/home/reyks/Scripts/lifemanager'
+project_dir="$HOME/Scripts/lifemanager"
 tarball_file='lifemanager.tar.gz'
 
 tarball_final_dir="${app_name}"
