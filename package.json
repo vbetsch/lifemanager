@@ -10,12 +10,12 @@
         "clean": "rimraf dist main renderer/out renderer/.next",
         "dev": "npm run build:electron && electron .",
         "build:renderer": "next build src",
-        "build:electron": "tsc -p electron-src",
+        "build:electron": "tsc -p electron",
         "build:all": "npm run build:renderer && npm run build:electron",
         "pack-app": "npm run build:all && electron-builder --dir",
         "dist": "npm run build:all && electron-builder",
         "build": "npm run dist && ./scripts/build-tarball.sh",
-        "type-check": "tsc -p ./src/tsconfig.json && tsc -p ./electron-src/tsconfig.json"
+        "type-check": "tsc -p ./src/tsconfig.json && tsc -p ./electron/tsconfig.json"
     },
     "dependencies": {
         "electron-is-dev": "^1.2.0",
