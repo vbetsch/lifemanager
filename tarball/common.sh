@@ -22,7 +22,7 @@ BIN_DIR='/usr/local/bin'
 SHARE_DIR="$HOME/.local/share"
 APPLICATIONS_DIR="$HOME/.local/share/applications"
 
-IMAGE_FILE_NAME="${app_name}-${version}.AppImage"
-SHARE_APP_PATH="${share_dir}/${app_name}"
-IMAGE_FILE_BIN_PATH="${bin_dir}/${image_file_name}"
-DESKTOP_FILE_APP_PATH="${applications_dir}/${app_name}.desktop"
+IMAGE_FILE_NAME="${APP_NAME}-${version}.AppImage"
+SHARE_APP_PATH="${SHARE_DIR}/${APP_NAME}"
+IMAGE_FILE_BIN_PATH="${BIN_DIR}/${IMAGE_FILE_NAME}"
+DESKTOP_FILE_APP_PATH="${APPLICATIONS_DIR}/${APP_NAME}.desktop"
