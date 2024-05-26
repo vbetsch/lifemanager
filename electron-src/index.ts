@@ -9,7 +9,7 @@ import prepareNext from "electron-next";
 
 // Prepare the renderer once the app is ready
 app.on("ready", async () => {
-  await prepareNext("./renderer");
+  await prepareNext("./src");
 
   const mainWindow = new BrowserWindow({
     width: 800,
@@ -24,7 +24,7 @@ app.on("ready", async () => {
   const url = isDev
     ? "http://localhost:8000/"
     : format({
-        pathname: join(__dirname, "../renderer/out/index.html"),
+        pathname: join(__dirname, "../src/out/index.html"),
         protocol: "file:",
         slashes: true,
       });

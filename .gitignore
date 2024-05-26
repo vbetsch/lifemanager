@@ -4,8 +4,8 @@
 /.idea/
 /dist/
 /main/
-/renderer/.next/
-/renderer/out/
+/src/.next/
+/src/out/
 
 # dependencies
 /node_modules
