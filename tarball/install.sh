@@ -4,51 +4,20 @@
 source common.sh
 
 # --- VARIABLES ---
-image_file_local_path="./${IMAGE_FILE_NAME}"
-image_file_app_path="${SHARE_DIR}/${APP_NAME}/${IMAGE_FILE_NAME}"
-
-favicon_file_name='favicon.ico'
-favicon_file_local_path="./${favicon_file_name}"
-favicon_file_app_path="${SHARE_APP_PATH}/${favicon_file_name}"
+favicon_file_local_path="./${FAVICON_FILE_NAME}"
 
 desktop_content_file="
 [Desktop Entry]
 Name=${APP_NAME}
-Exec=${image_file_app_path} %u
+Exec=${IMAGE_FILE_APP_PATH} %u
 Type=Application
 Categories=Development;
 Terminal=false
-Icon=${favicon_file_app_path}
+Icon=${FAVICON_FILE_APP_PATH}
 "
 
 # --- FUNCTIONS ---
-function test_file() {
-    args=('--file')
-    if [ ${#} != ${#args[@]} ]; then
-      echo -e "${_STYLE_COLOR_RED}ERROR: ${#args[@]} arguments are required in ${FUNCNAME} but ${#} have been set ${_STYLE_RESET}"
-      IFS=$' '
-      echo -e "Arguments: ${_STYLE_COLOR_CYAN}${args[*]}${_STYLE_RESET}"
-      exit 1
-    fi
-    if [ ! -f "$1" ];then
-        echo -e "${_STYLE_ERROR}${_STYLE_COLOR_RED}: ${1} is not a file${_STYLE_RESET}"
-        exit 1
-    fi
-}
-function test_dir() {
-    args=('--directory')
-    if [ ${#} != ${#args[@]} ]; then
-      echo -e "${_STYLE_COLOR_RED}ERROR: ${#args[@]} arguments are required in ${FUNCNAME} but ${#} have been set ${_STYLE_RESET}"
-      IFS=$' '
-      echo -e "Arguments: ${_STYLE_COLOR_CYAN}${args[*]}${_STYLE_RESET}"
-      exit 1
-    fi
-    if [ ! -d "$1" ];then
-        echo -e "${_STYLE_ERROR}${_STYLE_COLOR_RED}: ${1} is not a directory${_STYLE_RESET}"
-        exit 1
-    fi
-}
-function test_update() {
+function _test_file_exist() {
     args=('--file-or-directory')
     if [ ${#} != ${#args[@]} ]; then
       echo -e "${_STYLE_COLOR_RED}ERROR: ${#args[@]} arguments are required in ${FUNCNAME} but ${#} have been set ${_STYLE_RESET}"
@@ -56,24 +25,21 @@ function test_update() {
       echo -e "Arguments: ${_STYLE_COLOR_CYAN}${args[*]}${_STYLE_RESET}"
       exit 1
     fi
-    if [ -f "$1" ] || [ -d "$1" ] || [ -L "$1" ];then
-        echo -e "${_STYLE_ERROR}${_STYLE_COLOR_RED}: ${1} already exists. Please use ${_STYLE_BOLD}update.sh${_STYLE_RESET}"
-        exit 1
-    fi
+    test_file_exist "$1" "Please use ${_STYLE_BOLD}update.sh"
 }
 
 # --- CHECKS BEFORE ---
-test_dir $BIN_DIR
-test_dir $SHARE_DIR
-test_dir $APPLICATIONS_DIR
+test_file_required $IMAGE_FILE_LOCAL_PATH
+test_file_required $favicon_file_local_path
 
-test_file $image_file_local_path
-test_file $favicon_file_local_path
+test_directory_required $BIN_DIR
+test_directory_required $SHARE_DIR
+test_directory_required $APPLICATIONS_DIR
 
-test_update $IMAGE_FILE_BIN_PATH
-test_update $image_file_app_path
-test_update $DESKTOP_FILE_APP_PATH
-test_update $favicon_file_app_path
+_test_file_exist $IMAGE_FILE_BIN_PATH
+_test_file_exist $IMAGE_FILE_APP_PATH
+_test_file_exist $DESKTOP_FILE_APP_PATH
+_test_file_exist $FAVICON_FILE_APP_PATH
 
 # --- STEP 1 ---
 if [ ! -d "$SHARE_APP_PATH" ];then
@@ -83,13 +49,13 @@ fi
 
 # --- STEP 2 ---
 echo -e "${_STYLE_COLOR_PURPLE}${_STYLE_ARROW}Creating desktop file${_STYLE_ELLIPSIS}${_STYLE_RESET}"
-sudo cp "$image_file_local_path" "$image_file_app_path"
-sudo cp "$favicon_file_local_path" "$favicon_file_app_path"
+sudo cp "$IMAGE_FILE_LOCAL_PATH" "$IMAGE_FILE_APP_PATH"
+sudo cp "$favicon_file_local_path" "$FAVICON_FILE_APP_PATH"
 echo "$desktop_content_file" >> "$DESKTOP_FILE_APP_PATH"
 
 # --- STEP 3 ---
 echo -e "${_STYLE_COLOR_PURPLE}${_STYLE_ARROW}Creating a symbolic link${_STYLE_ELLIPSIS}${_STYLE_RESET}"
-sudo ln -s "$image_file_app_path" "$BIN_DIR"
+sudo ln -s "$IMAGE_FILE_APP_PATH" "$BIN_DIR"
 
 # --- END ---
 echo -e $_STYLE_DONE

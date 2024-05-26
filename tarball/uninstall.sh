@@ -4,7 +4,7 @@
 source common.sh
 
 # --- FUNCTIONS ---
-function test_update() {
+function _test_file_not_exist() {
     args=('--file-or-directory')
     if [ ${#} != ${#args[@]} ]; then
       echo -e "${_STYLE_COLOR_RED}ERROR: ${#args[@]} arguments are required in ${FUNCNAME} but ${#} have been set ${_STYLE_RESET}"
@@ -12,16 +12,13 @@ function test_update() {
       echo -e "Arguments: ${_STYLE_COLOR_CYAN}${args[*]}${_STYLE_RESET}"
       exit 1
     fi
-    if [ ! -f "$1" ] && [ ! -d "$1" ] && [ ! -L "$1" ];then
-        echo -e "${_STYLE_ERROR}${_STYLE_COLOR_RED}: ${1} not exists. Please use ${_STYLE_BOLD}install.sh${_STYLE_RESET}"
-        exit 1
-    fi
+    test_file_not_exist "$1" "Please use ${_STYLE_BOLD}install.sh"
 }
 
 # --- CHECKS BEFORE ---
-test_update $IMAGE_FILE_BIN_PATH
-test_update $SHARE_APP_PATH
-test_update $DESKTOP_FILE_APP_PATH
+_test_file_not_exist $IMAGE_FILE_BIN_PATH
+_test_file_not_exist $SHARE_APP_PATH
+_test_file_not_exist $DESKTOP_FILE_APP_PATH
 
 # --- STEP 1 ---
 echo -e "${_STYLE_COLOR_PURPLE}${_STYLE_ARROW}Removing AppImage symbolic link${_STYLE_ELLIPSIS}${_STYLE_RESET}"
