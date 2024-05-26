@@ -25,7 +25,7 @@ _STYLE_DONE="${_STYLE_COLOR_GREEN}Done${_STYLE_RESET}"
 app_name='LifeManager'
 version='7.6.2'
 project_dir='/home/reyks/Scripts/lifemanager'
-tarball_name='lifemanager'
+tarball_file='lifemanager.tar.gz'
 tmp_dir='tmp'
 
 dist_dir="${project_dir}/dist"
@@ -68,6 +68,11 @@ test_dir $dist_dir
 test_dir $tarball_dir
 test_file $image_file_path
 
+# --- STEP 0 ---
+if [ -f "$tarball_file" ];then
+    rm "$tarball_file"
+fi
+
 # --- STEP 1 ---
 echo -e "${_STYLE_COLOR_PURPLE}${_STYLE_ARROW}Create temporary folder${_STYLE_ELLIPSIS}${_STYLE_RESET}"
 mkdir -p "$tmp_dir"
@@ -76,7 +81,7 @@ cp -r "${tarball_dir}/." "$tmp_dir"
 
 # --- STEP 2 ---
 echo -e "${_STYLE_COLOR_PURPLE}${_STYLE_ARROW}Building archive${_STYLE_ELLIPSIS}${_STYLE_RESET}"
-tar -czvf "${tarball_name}.tar.gz" "${tmp_dir}"
+tar -czvf "${tarball_file}" "${tmp_dir}"
 
 # --- STEP 3 ---
 echo -e "${_STYLE_COLOR_PURPLE}${_STYLE_ARROW}Removing temporary folder${_STYLE_ELLIPSIS}${_STYLE_RESET}"
