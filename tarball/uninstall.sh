@@ -5,7 +5,7 @@ source common.sh
 
 # --- FUNCTIONS ---
 function test_update() {
-    args=('--directory')
+    args=('--file-or-directory')
     if [ ${#} != ${#args[@]} ]; then
       echo -e "${_STYLE_COLOR_RED}ERROR: ${#args[@]} arguments are required in ${FUNCNAME} but ${#} have been set ${_STYLE_RESET}"
       IFS=$' '
@@ -13,7 +13,7 @@ function test_update() {
       exit 1
     fi
     if [ ! -f "$1" ] && [ ! -d "$1" ] && [ ! -L "$1" ];then
-        echo -e "${_STYLE_ERROR}${_STYLE_COLOR_RED}: ${1} already exists. Please use ${_STYLE_BOLD}install.sh${_STYLE_RESET}"
+        echo -e "${_STYLE_ERROR}${_STYLE_COLOR_RED}: ${1} not exists. Please use ${_STYLE_BOLD}install.sh${_STYLE_RESET}"
         exit 1
     fi
 }
@@ -24,15 +24,15 @@ test_update $SHARE_APP_PATH
 test_update $DESKTOP_FILE_APP_PATH
 
 # --- STEP 1 ---
-echo -e "${_STYLE_COLOR_PURPLE}${_STYLE_ARROW}Remove AppImage symlink${_STYLE_ELLIPSIS}${_STYLE_RESET}"
+echo -e "${_STYLE_COLOR_PURPLE}${_STYLE_ARROW}Removing AppImage symbolic link${_STYLE_ELLIPSIS}${_STYLE_RESET}"
 sudo rm "$IMAGE_FILE_BIN_PATH"
 
 # --- STEP 2 ---
-echo -e "${_STYLE_COLOR_PURPLE}${_STYLE_ARROW}Remove share folder${_STYLE_ELLIPSIS}${_STYLE_RESET}"
+echo -e "${_STYLE_COLOR_PURPLE}${_STYLE_ARROW}Removing share folder${_STYLE_ELLIPSIS}${_STYLE_RESET}"
 sudo rm -rf "$SHARE_APP_PATH"
 
 # --- STEP 3 ---
-echo -e "${_STYLE_COLOR_PURPLE}${_STYLE_ARROW}Remove desktop file${_STYLE_ELLIPSIS}${_STYLE_RESET}"
+echo -e "${_STYLE_COLOR_PURPLE}${_STYLE_ARROW}Removing desktop file${_STYLE_ELLIPSIS}${_STYLE_RESET}"
 sudo rm "$DESKTOP_FILE_APP_PATH"
 
 # --- END ---
