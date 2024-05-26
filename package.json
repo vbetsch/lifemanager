@@ -9,13 +9,13 @@
     "scripts": {
         "clean": "rimraf dist main renderer/out renderer/.next",
         "dev": "npm run build:electron && electron .",
+        "type-check": "tsc -p ./src/tsconfig.json && tsc -p ./electron/tsconfig.json",
         "build:renderer": "next build src",
         "build:electron": "tsc -p electron",
         "build:all": "npm run build:renderer && npm run build:electron",
-        "pack-app": "npm run build:all && electron-builder --dir",
         "dist": "npm run build:all && electron-builder",
-        "build": "npm run dist && ./scripts/build-tarball.sh",
-        "type-check": "tsc -p ./src/tsconfig.json && tsc -p ./electron/tsconfig.json"
+        "pack-app": "npm run build:all && electron-builder --dir",
+        "build": "npm run dist && ./scripts/build-tarball.sh"
     },
     "dependencies": {
         "electron-is-dev": "^1.2.0",
