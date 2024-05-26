@@ -86,7 +86,7 @@ function test_update() {
       echo -e "Arguments: ${_STYLE_COLOR_CYAN}${args[*]}${_STYLE_RESET}"
       exit 1
     fi
-    if [ -f "$1" ] || [ -L "$1" ];then
+    if [ -f "$1" ] || [ -d "$1" ] || [ -L "$1" ];then
         echo -e "${_STYLE_ERROR}${_STYLE_COLOR_RED}: ${1} already exists. Please use ${_STYLE_BOLD}update.sh${_STYLE_RESET}"
         exit 1
     fi
