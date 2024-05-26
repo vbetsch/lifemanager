@@ -88,4 +88,5 @@ echo -e "${_STYLE_COLOR_PURPLE}${_STYLE_ARROW}Removing temporary folder${_STYLE_
 rm -rf "$tarball_final_dir"
 
 # --- END ---
-echo -e $_STYLE_DONE
+echo -e "${_STYLE_COLOR_GREEN}Build is complete. ${_STYLE_RESET}"
+echo -e "It is located at ${PWD}/${tarball_file}"
