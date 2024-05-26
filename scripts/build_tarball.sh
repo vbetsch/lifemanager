@@ -26,10 +26,10 @@ app_name='LifeManager'
 version='7.6.2'
 project_dir='/home/reyks/Scripts/lifemanager'
 tarball_file='lifemanager.tar.gz'
-tmp_dir='tmp'
 
+tarball_final_dir="${app_name}"
 dist_dir="${project_dir}/dist"
-tarball_dir="${project_dir}/tarball"
+tarball_content_dir="${project_dir}/tarball"
 
 image_file_name="${app_name}-${version}.AppImage"
 image_file_path="${dist_dir}/${image_file_name}"
@@ -65,7 +65,7 @@ function test_dir() {
 # --- CHECKS BEFORE ---
 test_dir $project_dir
 test_dir $dist_dir
-test_dir $tarball_dir
+test_dir $tarball_content_dir
 test_file $image_file_path
 
 # --- STEP 0 ---
@@ -75,17 +75,17 @@ fi
 
 # --- STEP 1 ---
 echo -e "${_STYLE_COLOR_PURPLE}${_STYLE_ARROW}Create temporary folder${_STYLE_ELLIPSIS}${_STYLE_RESET}"
-mkdir -p "$tmp_dir"
-cp "$image_file_path" "$tmp_dir"
-cp -r "${tarball_dir}/." "$tmp_dir"
+mkdir -p "$tarball_final_dir"
+cp "$image_file_path" "$tarball_final_dir"
+cp -r "${tarball_content_dir}/." "$tarball_final_dir"
 
 # --- STEP 2 ---
 echo -e "${_STYLE_COLOR_PURPLE}${_STYLE_ARROW}Building archive${_STYLE_ELLIPSIS}${_STYLE_RESET}"
-tar -czvf "${tarball_file}" "${tmp_dir}"
+tar -czvf "${tarball_file}" "${tarball_final_dir}"
 
 # --- STEP 3 ---
 echo -e "${_STYLE_COLOR_PURPLE}${_STYLE_ARROW}Removing temporary folder${_STYLE_ELLIPSIS}${_STYLE_RESET}"
-rm -rf "$tmp_dir"
+rm -rf "$tarball_final_dir"
 
 # --- END ---
 echo -e $_STYLE_DONE
