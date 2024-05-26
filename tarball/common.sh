@@ -1,0 +1,28 @@
+# Styles
+_STYLE_RESET='\033[0m'
+_STYLE_BOLD='\033[01m'
+_STYLE_COLOR_CYAN='\033[36m'
+_STYLE_COLOR_RED='\033[31m'
+_STYLE_COLOR_GREEN='\033[32m'
+_STYLE_COLOR_YELLOW='\033[93m'
+_STYLE_COLOR_PURPLE='\033[34m'
+_STYLE_ARROW='➔ '
+_STYLE_ELLIPSIS='...'
+_STYLE_ERROR="${_STYLE_COLOR_RED}ERROR${_STYLE_RESET}"
+_STYLE_WARN="${_STYLE_COLOR_YELLOW}WARNING${_STYLE_RESET}"
+_STYLE_INFO="${_STYLE_COLOR_CYAN}INFO${_STYLE_RESET}"
+_STYLE_OK="${_STYLE_COLOR_GREEN}OK${_STYLE_RESET}"
+_STYLE_DONE="${_STYLE_COLOR_GREEN}Done${_STYLE_RESET}"
+
+# --- VARIABLES ---
+version='7.6.2'
+
+APP_NAME='LifeManager'
+BIN_DIR='/usr/local/bin'
+SHARE_DIR="$HOME/.local/share"
+APPLICATIONS_DIR="$HOME/.local/share/applications"
+
+IMAGE_FILE_NAME="${app_name}-${version}.AppImage"
+SHARE_APP_PATH="${share_dir}/${app_name}"
+IMAGE_FILE_BIN_PATH="${bin_dir}/${image_file_name}"
+DESKTOP_FILE_APP_PATH="${applications_dir}/${app_name}.desktop"
