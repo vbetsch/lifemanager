@@ -11,10 +11,10 @@
         "dev": "npm run build-electron && electron .",
         "build-renderer": "next build renderer",
         "build-electron": "tsc -p electron-src",
-        "build": "npm run build-renderer && npm run build-electron",
+        "build-all": "npm run build-renderer && npm run build-electron",
         "pack-app": "npm run build && electron-builder --dir",
         "dist": "npm run build && electron-builder",
-        "final": "npm run dist && scripts/build-tarball.sh",
+        "build": "npm run dist && scripts/build-tarball.sh",
         "type-check": "tsc -p ./renderer/tsconfig.json && tsc -p ./electron-src/tsconfig.json"
     },
     "dependencies": {
