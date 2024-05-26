@@ -1,7 +1,7 @@
 #!/bin/bash
 # by @vbetsch -> https://github.com/vbetsch
 
-source common/style.sh
+source common/_style.sh
 source common/variables.sh
 source common/functions.sh
 
