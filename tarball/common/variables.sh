@@ -1,0 +1,21 @@
+version='7.6.2'
+
+APP_NAME='LifeManager'
+BIN_DIR='/usr/local/bin'
+
+SHARE_DIR="$HOME/.local/share"
+APPLICATIONS_DIR="$HOME/.local/share/applications"
+SHARE_APP_PATH="${SHARE_DIR}/${APP_NAME}"
+
+# AppImage
+IMAGE_FILE_NAME="${APP_NAME}-${version}.AppImage"
+IMAGE_FILE_LOCAL_PATH="./${IMAGE_FILE_NAME}"
+IMAGE_FILE_APP_PATH="${SHARE_DIR}/${APP_NAME}/${IMAGE_FILE_NAME}"
+IMAGE_FILE_BIN_PATH="${BIN_DIR}/${IMAGE_FILE_NAME}"
+
+# Favicon
+FAVICON_FILE_NAME='favicon.ico'
+FAVICON_FILE_APP_PATH="${SHARE_APP_PATH}/${FAVICON_FILE_NAME}"
+
+# Desktop file
+DESKTOP_FILE_APP_PATH="${APPLICATIONS_DIR}/${APP_NAME}.desktop"

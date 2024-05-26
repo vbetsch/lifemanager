@@ -1,7 +1,9 @@
 #!/bin/bash
 # by @vbetsch -> https://github.com/vbetsch
 
-source common.sh
+source common/style.sh
+source common/variables.sh
+source common/functions.sh
 
 # --- VARIABLES ---
 favicon_file_local_path="./${FAVICON_FILE_NAME}"

@@ -1,7 +1,9 @@
 #!/bin/bash
 # by @vbetsch -> https://github.com/vbetsch
 
-source common.sh
+source common/style.sh
+source common/variables.sh
+source common/functions.sh
 
 # --- FUNCTIONS ---
 function _test_file_not_exist() {
