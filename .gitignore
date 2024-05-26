@@ -3,6 +3,7 @@
 *.tar.gz
 /.idea/
 /dist/
+/main/
 /renderer/.next/
 /renderer/out/
 
