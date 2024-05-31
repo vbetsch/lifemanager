@@ -53,7 +53,7 @@ fi
 echo -e "${_STYLE_COLOR_PURPLE}${_STYLE_ARROW}Creating desktop file${_STYLE_ELLIPSIS}${_STYLE_RESET}"
 sudo cp "$IMAGE_FILE_LOCAL_PATH" "$IMAGE_FILE_APP_PATH"
 sudo cp "$favicon_file_local_path" "$FAVICON_FILE_APP_PATH"
-echo "$desktop_content_file" >> "$DESKTOP_FILE_APP_PATH"
+echo "$desktop_content_file" > "$DESKTOP_FILE_APP_PATH"
 
 # --- STEP 3 ---
 echo -e "${_STYLE_COLOR_PURPLE}${_STYLE_ARROW}Creating a symbolic link${_STYLE_ELLIPSIS}${_STYLE_RESET}"
