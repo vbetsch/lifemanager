@@ -24,7 +24,7 @@ _STYLE_DONE="${_STYLE_COLOR_GREEN}Done${_STYLE_RESET}"
 # --- VARIABLES ---
 app_name='LifeManager'
 version='7.6.2'
-project_dir="$HOME/Scripts/lifemanager"
+project_dir="${HOME}/Scripts/lifemanager"
 tarball_file='lifemanager.tar.gz'
 
 tarball_final_dir="${app_name}"
@@ -63,10 +63,10 @@ function test_dir() {
 }
 
 # --- CHECKS BEFORE ---
-test_dir $project_dir
-test_dir $dist_dir
-test_dir $tarball_content_dir
-test_file $image_file_path
+test_dir "$project_dir"
+test_dir "$dist_dir"
+test_dir "$tarball_content_dir"
+test_file "$image_file_path"
 
 # --- STEP 0 ---
 if [ -f "$tarball_file" ];then
@@ -81,7 +81,7 @@ cp -r "${tarball_content_dir}/." "$tarball_final_dir"
 
 # --- STEP 2 ---
 echo -e "${_STYLE_COLOR_PURPLE}${_STYLE_ARROW}Building archive${_STYLE_ELLIPSIS}${_STYLE_RESET}"
-tar -czvf "${tarball_file}" "${tarball_final_dir}"
+tar -czvf "$tarball_file" "$tarball_final_dir"
 
 # --- STEP 3 ---
 echo -e "${_STYLE_COLOR_PURPLE}${_STYLE_ARROW}Removing temporary folder${_STYLE_ELLIPSIS}${_STYLE_RESET}"
