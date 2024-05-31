@@ -3,8 +3,8 @@ version='7.6.2'
 APP_NAME='LifeManager'
 BIN_DIR='/usr/local/bin'
 
-SHARE_DIR="$HOME/.local/share"
-APPLICATIONS_DIR="$HOME/.local/share/applications"
+SHARE_DIR="${HOME}/.local/share"
+APPLICATIONS_DIR="${HOME}/.local/share/applications"
 SHARE_APP_PATH="${SHARE_DIR}/${APP_NAME}"
 
 # AppImage

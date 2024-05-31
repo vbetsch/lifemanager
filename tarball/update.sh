@@ -1,9 +1,9 @@
 #!/bin/bash
 # by @vbetsch -> https://github.com/vbetsch
 
-source common/_style.sh
-source common/variables.sh
-source common/functions.sh
+source 'common/_style.sh'
+source 'common/variables.sh'
+source 'common/functions.sh'
 
 # --- FUNCTIONS ---
 function _test_file_not_exist() {
@@ -14,15 +14,15 @@ function _test_file_not_exist() {
       echo -e "Arguments: ${_STYLE_COLOR_CYAN}${args[*]}${_STYLE_RESET}"
       exit 1
     fi
-    test_file_not_exist "$1" "Please reinstall."
+    test_file_not_exist "$1" 'Please reinstall.'
 }
 
 # --- CHECKS BEFORE ---
-test_file_required $IMAGE_FILE_LOCAL_PATH
-_test_file_not_exist $IMAGE_FILE_BIN_PATH
-_test_file_not_exist $IMAGE_FILE_APP_PATH
-_test_file_not_exist $DESKTOP_FILE_APP_PATH
-_test_file_not_exist $FAVICON_FILE_APP_PATH
+test_file_required "$IMAGE_FILE_LOCAL_PATH"
+_test_file_not_exist "$IMAGE_FILE_BIN_PATH"
+_test_file_not_exist "$IMAGE_FILE_APP_PATH"
+_test_file_not_exist "$DESKTOP_FILE_APP_PATH"
+_test_file_not_exist "$FAVICON_FILE_APP_PATH"
 
 # --- STEP 1 ---
 echo -e "${_STYLE_COLOR_PURPLE}${_STYLE_ARROW}Removing AppImage symbolic link${_STYLE_ELLIPSIS}${_STYLE_RESET}"
@@ -38,4 +38,4 @@ echo -e "${_STYLE_COLOR_PURPLE}${_STYLE_ARROW}Recreating the symbolic link${_STY
 sudo ln -s "$IMAGE_FILE_APP_PATH" "$BIN_DIR"
 
 # --- END ---
-echo -e $_STYLE_DONE
+echo -e "$_STYLE_DONE"
